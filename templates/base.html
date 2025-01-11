@@ -1,0 +1,494 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    <style>
+ /* General styling */
+/* General styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #404040;
+}
+
+
+/* Header Styling */
+div[style*="background-color:#404040"] {
+    background-color: #222831;
+    color: #feda6a;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 3px solid #feda6a;
+}
+
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+
+/* Navigation Bar */
+ul#nav {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background-color: #222831;
+    padding: 10px;
+    margin: 0;
+}
+
+
+ul#nav li {
+    margin: 0 20px;
+}
+
+
+ul#nav li a {
+    color: #feda6a;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+ul#nav li a:hover {
+    background-color: #feda6a;
+    color: #222831;
+    border-radius: 5px;
+}
+
+
+/* Center Form Styling */
+.form-style {
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 50px auto;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+/* Centered Labels and Fields */
+label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222831;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+input[type="text"], input[type="password"], input[type="submit"], .submit {
+    display: block;
+    margin: 10px auto 20px auto;
+    padding: 12px 15px;
+    font-size: 1rem;
+    width: 80%;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Focus Effect */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #00adb5;
+    box-shadow: 0 0 5px rgba(0, 173, 181, 0.5);
+    outline: none;
+}
+
+
+/* Styling for Username, Password, and Confirm Password fields */
+.username-field, .password-field, .confirm-password-field {
+    background-color: #f9f9f9;
+    font-size: 1rem;
+}
+
+
+.username-field:focus, .password-field:focus, .confirm-password-field:focus {
+    border-color: #00adb5;
+    box-shadow: 0 0 5px rgba(0, 173, 181, 0.5);
+    outline: none;
+}
+
+
+/* Submit Button */
+input[type="submit"] {
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    padding: 14px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+
+input[type="submit"]:hover {
+    background-color: #00727a;
+}
+
+
+/* Button Styling */
+button {
+    background-color: #00adb5;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: #00727a;
+}
+
+
+/* Split Screen Layout */
+/* General Container for each section */
+/* General Styling */
+.h2 {
+    color: #00adb5;
+    text-align: center;
+}
+
+
+/* Container for Cards */
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+
+/* Left side (50% width for text and processed info) */
+.left-side {
+  width: 48%;
+  padding: 20px;
+}
+
+
+/* Right side (50% width for sign language animation) */
+.right-side {
+  width: 48%;
+  padding: 20px;
+}
+
+
+/* Card Styling */
+.card, .card1 {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
+
+.card:hover, .card1:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+/* Card Styling */
+/* Card Styling */
+.card, .card1 {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
+
+.card:hover, .card1:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Ensure the video and other elements are centered properly */
+video {
+  display: block;
+  margin: 20px auto;
+  border: 5px solid #00adb5;
+  border-radius: 10px;
+}
+
+
+button.submit {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #feda6a;
+  color: #393f4d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+button.submit:hover {
+  background-color: #393f4d;
+  color: #feda6a;
+}
+
+
+/* Input text and button styling */
+.mytext {
+  border: 1px solid #393f4d;
+  padding: 8px;
+  margin: 0;
+  width: 300px;
+  display: inline-block;
+  height: 32px;
+  border-radius: 4px 0 0 4px;
+}
+
+
+.mic {
+  border: 1px solid #393f4d;
+  background: #ffffff;
+  padding: 0;
+  width: 5em;
+  display: inline-block;
+  height: 42px;
+  text-align: center;
+  line-height: 42px;
+  border-radius: 0 4px 4px 0;
+}
+
+
+.submit {
+  height: 42px;
+  width: 160px;
+  text-align: center;
+  background-color: #feda6a;
+  color: #393f4d;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+.submit:hover {
+  background-color: #393f4d;
+  color: #feda6a;
+}
+
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Form Input Styling */
+.mytext {
+    border: 1px solid #393f4d;
+    border-right: none;
+    padding: 8px;
+    margin: 0;
+    display: inline-block;
+    height: 32px;
+    width: 300px;
+    border-radius: 4px 0 0 4px;
+}
+
+
+/* Mic Button Styling */
+.mic {
+    border: 1px solid #393f4d;
+    background: #ffffff;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    height: 42px;
+    overflow: hidden;
+    width: 45px;
+    text-align: center;
+    line-height: 42px;
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* Submit Button Styling */
+.submit {
+    border: 1px solid #393f4d;
+    height: 42px;
+    width: 160px;
+    text-align: center;
+    background-color: #feda6a;
+    color: #393f4d;
+    font-weight: bold;
+    font-size: 16px;
+    vertical-align: top;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.submit:hover {
+    background-color: #393f4d;
+    color: #feda6a;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+
+    .mytext {
+        width: 80%;
+    }
+}
+
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-spacing: 10px;
+    margin: 20px 0;
+}
+
+
+td {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+/* List Items in Table */
+ul.td {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+
+ul.td li {
+    display: inline-block;
+    background-color: #00adb5;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+
+ul.td li:hover {
+    background-color: #00727a;
+    transform: scale(1.1);
+}
+
+
+/* Video Section */
+video {
+    display: block;
+    margin: 20px auto;
+    border: 5px solid #00adb5;
+    border-radius: 10px;
+}
+
+
+/* Footer Styling */
+p.td {
+    color: #888888;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 50px;
+    padding: 10px;
+}
+.errorlist{
+    color: red;
+    font-weight: bold;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .split {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+
+    ul#nav li {
+        margin: 0 10px;
+    }
+
+
+    input[type="text"], input[type="password"], input[type="submit"], .submit {
+        width: 100%;
+    }
+
+
+    .form-style {
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div >
+        <h1 align ="center">Audio To Sign Language </h1>
+    </div>
+    <br>
+
+
+    <ul id="nav">
+        <li class="li"><a class="active" href="{% url 'home' %}">Home</a></li>
+        <li class="li"><a href="{% url 'animation' %}">Convertor</a></li>
+        {% if not user.is_authenticated %}
+        <li class="li"><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <li class="li"><a href="{% url 'logout' %}">Log-Out</a></li>
+        {% else %}
+        <li class="li"><a href="{% url 'login' %}">Log-in</a></li>
+        {% endif %}
+        <li class="li"><a href="{% url 'contact' %}">Contact</a></li>
+        <li class="li"><a href="{% url 'about' %}">About</a></li>
+    </ul>
+
+
+    <div class="wrapper">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+</body>
+</html>

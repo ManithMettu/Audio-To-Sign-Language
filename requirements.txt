@@ -1,0 +1,9 @@
+pipasgiref
+click
+Django
+joblib
+nltk
+regex
+sqlparse
+tqdm
+setuptools

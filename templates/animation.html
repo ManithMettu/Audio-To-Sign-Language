@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  
+  <!-- Card 1: Enter Text or Use Mic -->
+  <div class="card1">
+    <h2 align="center">Enter Text or Use Mic</h2>
+    <form action="" method="post" align="center">
+      {% csrf_token %}
+      <input type="text" name="sen" class="mytext" id="speechToText" placeholder="">
+      <button type="button" name="button" class="mic" onclick="record()">
+        <img src="{% static 'mic3.gif' %}" height="45px" width="40px" />
+      </button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="submit" name="submit" class="submit">
+    </form>
+  </div>
+
+  <!-- Card 2: Displayed Text and Keywords -->
+  <div class="card1">
+    <h2 align="center">Processed Information</h2>
+    <table cellspacing="20px" align="center">
+      <tr>
+        <td class="td">The text that you entered is:</td>
+        <td class="td">{{ text }}</td>
+      </tr>
+      <tr>
+        <td class="td">Key words in sentence:</td>
+        <td class="td">
+          <ul class="td" id="list" align="center">
+            {% for word in words %}
+            <li id="{{ i }}" style="margin-right: 8px">{{ word }}</li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Card 3: Sign Language Animation -->
+  <div class="card">
+    <h2 align="center">Sign Language Animation</h2>
+    <div style="text-align:center">
+      <button class="submit" onclick="playPause()">Play/Pause</button>
+      <video id="videoPlayer" width="600" height="350" preload="auto" autoplay>
+        <source src="" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function record() {
+    var recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-IN';
+    recognition.onresult = function (event) {
+      console.log(event);
+      document.getElementById('speechToText').value = event.results[0][0].transcript;
+    };
+    recognition.start();
+  }
+
+  function play() {
+    var videoSource = [];
+    var videos = document.getElementById("list").getElementsByTagName("li");
+    for (var j = 0; j < videos.length; j++) {
+      videoSource[j] = "/static/" + videos[j].innerHTML + ".mp4";
+    }
+
+    var i = 0;
+    var videoCount = videoSource.length;
+
+    function videoPlay(videoNum) {
+      document.getElementById("list").getElementsByTagName("li")[videoNum].style.color = "#09edc7";
+      document.getElementById("list").getElementsByTagName("li")[videoNum].style.fontSize = "xx-large";
+      document.getElementById("videoPlayer").setAttribute("src", videoSource[videoNum]);
+      document.getElementById("videoPlayer").load();
+      document.getElementById("videoPlayer").play();
+    }
+
+    document.getElementById('videoPlayer').addEventListener('ended', myHandler, false);
+    document.getElementById("list").getElementsByTagName("li")[0].style.color = "#09edc7";
+    document.getElementById("list").getElementsByTagName("li")[0].style.fontSize = "xx-large";
+
+    videoPlay(0);
+
+    function myHandler() {
+      document.getElementById("list").getElementsByTagName("li")[i].style.color = "#feda6a";
+      document.getElementById("list").getElementsByTagName("li")[i].style.fontSize = "20px";
+      i++;
+      if (i == videoCount) {
+        document.getElementById("videoPlayer").pause();
+      } else {
+        videoPlay(i);
+      }
+    } 
+  }
+
+  function playPause() {
+    if (document.getElementById("videoPlayer").paused) {
+      play();
+    } else {
+      document.getElementById("videoPlayer").pause();
+    }
+  }
+</script>
+
+{% endblock %}
